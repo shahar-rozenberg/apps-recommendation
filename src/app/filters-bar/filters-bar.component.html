@@ -1,0 +1,22 @@
+<form [formGroup]="filtersForm" (ngSubmit)="onSubmit(filtersForm.value)">
+  <mat-form-field appearance="standard">
+    <input matInput placeholder="Search text" type="text" formControlName="freeText">
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <input matInput type="date" formControlName="birthYear" placeholder="Birth Date">
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-select multiple formControlName="preferredCategories" placeholder="Categories">
+      <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <input matInput placeholder="Rating" type="number" min="0" max="5" step="0.1"
+           formControlName="minimumAppRating">
+  </mat-form-field>
+
+  <button mat-stroked-button color="primary" type="submit">Apply</button>
+</form>

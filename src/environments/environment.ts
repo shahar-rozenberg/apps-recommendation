@@ -3,7 +3,25 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  FILTERS: ['Free text', 'Birth year', 'Preferred Categories', 'Minimum app rating'],
+  FIELDS_TITLES: {
+    icon: 'Icon',
+    name: 'Name',
+    category: 'Category',
+    rating: 'Rating',
+    externalId: 'External Id',
+    id: 'Id',
+    installCount: 'Install Count',
+    description: 'Description',
+    url: 'URL',
+    publisher: 'Publisher',
+    minAge: 'Min age',
+  },
+  TABLE_FIELDS: ['icon', 'name', 'category', 'rating', 'externalId'],
+  SERVER_URL: 'http://localhost:3000',
+  CATEGORIES_URL: 'categories',
+  APPLICATIONS_URL: 'applications',
 };
 
 /*

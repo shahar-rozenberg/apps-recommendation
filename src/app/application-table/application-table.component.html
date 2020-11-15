@@ -1,0 +1,33 @@
+<mat-table class="app-table" [dataSource]="apps">
+  <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column.id}}">
+    <mat-header-cell *matHeaderCellDef> {{column.text}} </mat-header-cell>
+    <mat-cell *matCellDef="let app">
+      <span *ngIf="column.id !== ICON_FIELD">{{app[column.id]}}</span>
+      <img *ngIf="column.id === ICON_FIELD" [src]="app[column.id]"/>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="noData">
+    <mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length">
+      {{isFirstQuery ? 'Please click apply to fetch data.' : NOT_FOUND_MESSAGE}}
+    </mat-footer-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="loading">
+    <mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length">
+      Loading, please wait...
+    </mat-footer-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="getColumnsIds()"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: getColumnsIds()" (click)="openDetailsPopup(row)"></mat-row>
+
+  <mat-footer-row *matFooterRowDef="['noData']"
+                  [ngClass]="{'hide': isLoading || (apps && apps.length > 0)}"></mat-footer-row>
+  <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide': !isLoading }"></mat-footer-row>
+</mat-table>
+<div class="loading-ring" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>

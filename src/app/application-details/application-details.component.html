@@ -1,0 +1,13 @@
+<div class="title">
+  <h1 mat-dialog-title class="title"></h1>
+  <img [src]="recommendedApp.icon"/>{{recommendedApp.name}}
+</div>
+<div class="content" mat-dialog-content>
+  <div *ngFor="let field of getExtendDetails()">
+    <span>{{field[1]}}:</span>
+    <span>{{recommendedApp[field[0]]}}</span>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button mat-dialog-close cdkFocusInitial>Ok</button>
+</div>
