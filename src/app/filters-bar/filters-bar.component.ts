@@ -15,9 +15,8 @@ export class FiltersBarComponent {
   private _categories: any;
 
   constructor(private formBuilder: FormBuilder, private _appService: ApplicationsService) {
-    this._appService.getCategories().subscribe((jsonCategories) => {
-      this._categories = jsonCategories;
-    });
+    this._appService.getCategories();
+    this._appService.categoriesSubject.subscribe(categories => this._categories = categories);
 
     this._filters = environment.FILTERS;
     this._filtersForm = this.formBuilder.group({

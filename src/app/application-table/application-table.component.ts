@@ -16,6 +16,7 @@ export class ApplicationTableComponent implements OnInit {
   public isFirstQuery: boolean = true;
   public readonly ICON_FIELD: string = 'icon';
   public readonly NOT_FOUND_MESSAGE: string = 'No records found. Please enter filters and apply.';
+  public readonly BEFORE_FIRST_QUERY_MESSAGE: string = 'Please click apply to fetch data.';
   public isLoading: boolean = false;
 
   constructor(private _appService: ApplicationsService, private _dialog: MatDialog) {
